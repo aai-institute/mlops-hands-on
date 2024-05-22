@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=62", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ames-housing"
+description = ""
+version = "0.1.0"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+  "notebook==7.2.0",
+  "pandas==2.2.2",
+  "scikit-learn==1.4.2",
+  "mlflow==2.13.0",
+  "dagster==1.7.6",
+  "dagster-webserver==1.7.6"
+]
+
+[project.optional-dependencies]
+dev = ["black", "ruff", "ruff-lsp"]
+
+[tool.ruff]
+src = ["src"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]
+ignore = ["E501", "F841"]
