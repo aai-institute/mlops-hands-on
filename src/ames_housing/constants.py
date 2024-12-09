@@ -11,5 +11,5 @@ TARGET = "sale_price"
 
 RANDOM_STATE = 42
 
-MLFLOW_TRACKING_SERVER = "http://localhost:5000"
+MLFLOW_TRACKING_SERVER = "http://localhost:4000"
 MLFLOW_EXPERIMENT = "ames-housing"

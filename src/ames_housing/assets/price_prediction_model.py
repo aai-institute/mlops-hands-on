@@ -2,7 +2,7 @@
 
 import mlflow
 import pandas as pd
-from dagster import AutoMaterializePolicy, asset
+from dagster import AutomationCondition, asset
 from sklearn.compose import ColumnTransformer
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.impute import SimpleImputer
@@ -71,9 +71,7 @@ def price_prediction_model(
             ("preprocessor", preprocessing_pipeline),
             (
                 "estimator",
-                GradientBoostingRegressor(
-                    random_state=RANDOM_STATE,
-                ),
+                GradientBoostingRegressor(random_state=RANDOM_STATE),
             ),
         ]
     )

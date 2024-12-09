@@ -3,18 +3,23 @@
 ## Set the auto materialization policy to CRON for the raw data asset
 
 ```python
-@asset(
-    io_manager_key="csv_io_manager",
-    auto_materialize_policy=AutoMaterializePolicy.eager().with_rules(
-        AutoMaterializeRule.materialize_on_cron("*/2 * * * *")
-    ),
+schedule = ScheduleDefinition(
+    name="schedule",
+    target=AssetSelection.assets(["ames_housing_data"]),
+    cron_schedule="*/2 * * * *",
+    default_status=DefaultScheduleStatus.RUNNING,
+)
+
+definitions = Definitions(
+    ...
+    schedules=[schedule],
 )
 ```
 
 ```python
 @asset(
     io_manager_key="csv_io_manager",
-    auto_materialize_policy=AutoMaterializePolicy.eager(),
+    automation_condition=AutomationCondition.eager(),
 )
 ```
 
@@ -23,16 +28,16 @@
     outs={
         "train_data": AssetOut(
             io_manager_key="csv_io_manager",
-            auto_materialize_policy=AutoMaterializePolicy.eager(),
+            automation_condition=AutomationCondition.eager(),
         ),
         "test_data": AssetOut(
             io_manager_key="csv_io_manager",
-            auto_materialize_policy=AutoMaterializePolicy.eager(),
+            automation_condition=AutomationCondition.eager(),
         ),
     },
 )
 ```
 
 ```python
-@asset(auto_materialize_policy=AutoMaterializePolicy.eager())
+@asset(automation_condition=AutomationCondition.eager())
 ```

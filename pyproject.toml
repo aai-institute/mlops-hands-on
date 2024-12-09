@@ -9,12 +9,12 @@ version = "0.1.0"
 readme = "README.md"
 requires-python = ">=3.9"
 dependencies = [
-  "notebook==7.2.0",
-  "pandas==2.2.2",
-  "scikit-learn==1.4.2",
-  "mlflow==2.13.0",
-  "dagster==1.7.6",
-  "dagster-webserver==1.7.6"
+  "notebook==7.3.1",
+  "pandas==2.2.3",
+  "scikit-learn==1.5.2",
+  "mlflow==2.18.0",
+  "dagster==1.9.4",
+  "dagster-webserver==1.9.4"
 ]
 
 [project.optional-dependencies]
